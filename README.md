@@ -8,6 +8,8 @@ https://github.com/cloudflare/python-cloudflare#providing-cloudflare-username-an
 export CF_API_EMAIL=''
 export CF_API_KEY=''
 ```
+### Zone
+Set CF_ZONE_ID in the crontab to the Zone you want to update.
 ## Example crontab
 ```
 #         Cloudflare auth                       Zone to update        Script for updating records
