@@ -1,6 +1,6 @@
 # Cloudflare DDNS
 ## Prerequisites
-### Read this before choosing wether to use key or token
+### Read this before deciding between key or token
 https://github.com/cloudflare/python-cloudflare#providing-cloudflare-username-and-api-key
 ### Credentials as environment variables 
 ```
