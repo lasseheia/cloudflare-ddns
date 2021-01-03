@@ -12,7 +12,7 @@ def main():
         exit(e)
 
     # Connect to Cloudflare
-    cf = CloudFlare.CloudFlare(debug=True)
+    cf = CloudFlare.CloudFlare()
 
     # Get zone
     zone_id = os.environ['CF_ZONE_ID']
