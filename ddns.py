@@ -25,7 +25,7 @@ def main():
     for record in records:
         if record['type'] == 'A':
             if record['content'] != ip:
-                data = {'name':record['name'],'type':record['type'],'content':ip,'proxied':record['proxied']}
+                data = {'name': record['name'], 'type': record['type'], 'content': ip, 'proxied': record['proxied']}
                 try:
                     cf.zones.dns_records.put(record['zone_id'], record['id'], data=data)
                 except CloudFlare.exceptions.CloudFlareAPIError as e:
