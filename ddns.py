@@ -9,8 +9,8 @@ def main():
     
     # Get current IP address
     try:
-        r = requests.get('https://api.ipify.org?format=json')
-        ip = r.json()['ip']
+        r = requests.get('https://api.ipify.org')
+        ip = r.text
     except requests.exceptions.RequestException as e:
         raise SystemExit(e)
 
