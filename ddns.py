@@ -9,7 +9,7 @@ def main():
         r = requests.get('https://api.ipify.org')
         ip = r.text
     except requests.exceptions.RequestException as e:
-        exit(e)
+        raise SystemExit(e)
 
     # Connect to Cloudflare
     cf = CloudFlare.CloudFlare()
@@ -19,7 +19,7 @@ def main():
     try:
         records = cf.zones.dns_records.get(zone_id)
     except CloudFlare.exceptions.CloudFlareAPIError as e:
-        exit(e)
+        exit('/zones/dns_records.get %d %s - api call failed' % (e, e))
     
     # Update A records with new IP
     for record in records:
@@ -29,7 +29,7 @@ def main():
                 try:
                     cf.zones.dns_records.put(record['zone_id'], record['id'], data=data)
                 except CloudFlare.exceptions.CloudFlareAPIError as e:
-                    exit(e)
+                    exit('/zones/dns_records.put %d %s - api call failed' % (e, e))
 
 if __name__ == '__main__':
     main() 
