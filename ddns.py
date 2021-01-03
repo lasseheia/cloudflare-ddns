@@ -8,16 +8,29 @@ def main():
     load_dotenv(find_dotenv())
     
     # Get current IP address
-    r = requests.get('https://api.ipify.org?format=json')
-    ip = r.json()['ip']
+    try:
+        r = requests.get('https://api.ipify.org?format=json')
+        ip = r.json()['ip']
+    except requests.exceptions.RequestException as e:
+        raise SystemExit(e)
 
     # Connect to Cloudflare
-    cf = CloudFlare.CloudFlare(email=os.getenv('email'), token=os.getenv('token'))
-    zones = cf.zones.get()
-    for zone in zones:
-        zone_id = zone['id']
-        zone_name = zone['name']
-        print(zone_id, zone_name)
+    cf = CloudFlare.CloudFlare(email=os.getenv('email'), token=os.getenv('token'), debug=True)
+
+    # Get zone
+    try:
+        zone = cf.zones.dns_records.get(os.getenv('zone_id'))
+    except CloudFlare.exceptions.CloudFlareAPIError as e:
+        exit(e)
+    
+    # Update A records with new IP
+    for record in zone:
+        if record['type'] == 'A':
+            if record['content'] != ip:
+                try:
+                    cf.zones.dns_records.put(zone[0]['id'], record['zone_id'], data={'content': ip})
+                except CloudFlare.exceptions.CloudFlareAPIError as e:
+                    exit(e)
 
 if __name__ == '__main__':
     main() 
