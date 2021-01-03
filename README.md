@@ -10,6 +10,6 @@ export CF_API_KEY=''
 ```
 ## Example crontab
 ```
-#         Cloudflare auth                	      Zone to update        Script for updating records
+#         Cloudflare auth                       Zone to update        Script for updating records
 0 0 * * * source /scripts/cloudflare-ddns/.env; export CF_ZONE_ID=''; /scripts/cloudflare-ddns/env/bin/python /scripts/cloudflare-ddns/ddns.py
 ```
