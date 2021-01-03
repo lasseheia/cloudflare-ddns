@@ -1,35 +1,33 @@
-from dotenv import load_dotenv, find_dotenv
 import os
 import requests
 import json
 import CloudFlare
 
 def main():
-    # Load environment variables from .env file
-    load_dotenv(find_dotenv())
-    
     # Get current IP address
     try:
         r = requests.get('https://api.ipify.org')
         ip = r.text
     except requests.exceptions.RequestException as e:
-        raise SystemExit(e)
+        exit(e)
 
     # Connect to Cloudflare
-    cf = CloudFlare.CloudFlare(email=os.getenv('email'), token=os.getenv('token'), debug=True)
+    cf = CloudFlare.CloudFlare(debug=True)
 
     # Get zone
+    zone_id = os.environ['CF_ZONE_ID']
     try:
-        zone = cf.zones.dns_records.get(os.getenv('zone_id'))
+        records = cf.zones.dns_records.get(zone_id)
     except CloudFlare.exceptions.CloudFlareAPIError as e:
         exit(e)
     
     # Update A records with new IP
-    for record in zone:
+    for record in records:
         if record['type'] == 'A':
             if record['content'] != ip:
+                data = {'name':record['name'],'type':record['type'],'content':ip,'proxied':record['proxied']}
                 try:
-                    cf.zones.dns_records.put(zone[0]['id'], record['zone_id'], data={'content': ip})
+                    cf.zones.dns_records.put(record['zone_id'], record['id'], data=data)
                 except CloudFlare.exceptions.CloudFlareAPIError as e:
                     exit(e)
 
