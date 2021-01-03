@@ -1,7 +1,7 @@
 # Cloudflare DDNS
 ## Prerequisites
-* Read this before choosing wether to use key or token.
-** https://github.com/cloudflare/python-cloudflare#providing-cloudflare-username-and-api-key
+### Read this before choosing wether to use key or token
+https://github.com/cloudflare/python-cloudflare#providing-cloudflare-username-and-api-key
 ### Credentials as environment variables 
 ```
 export CF_API_EMAIL='ex@mple.org'
