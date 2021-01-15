@@ -3,7 +3,7 @@
 ### API key/token
 https://dash.cloudflare.com/profile/api-tokens
 ### Credentials as environment variables
-* .env must contain:
+* Create a file called `.env` and add the following contents:
 ```
 # Only set this if using key
 export CF_API_EMAIL=''
