@@ -11,9 +11,12 @@ export CF_API_EMAIL=''
 export CF_API_KEY=''
 ```
 ### Zone
-Set CF_ZONE_ID in the crontab to the Zone you want to update.
+Set CF_ZONE_ID in the crontab to the Zone you want to update
 ## Example crontab
 ```
 #         Cloudflare auth                       Zone to update        Script for updating records
 0 0 * * * source /scripts/cloudflare-ddns/.env; export CF_ZONE_ID=''; /scripts/cloudflare-ddns/env/bin/python /scripts/cloudflare-ddns/ddns.py
 ```
+## Troubleshooting
+* API error
+  * Use API key instead of token
