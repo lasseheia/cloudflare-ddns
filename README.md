@@ -22,5 +22,4 @@ export CF_API_KEY=''
 0 0 * * * source /scripts/cloudflare-ddns/.env; export CF_RECORD_NAME=''; /scripts/cloudflare-ddns/env/bin/python /scripts/cloudflare-ddns/ddns.py
 ```
 ## Troubleshooting
-* API error
-  * Use API key instead of token
+* Try using API key instead of token
