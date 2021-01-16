@@ -1,5 +1,11 @@
 # Cloudflare DDNS
-## Prerequisites
+## Usage
+### Create virtual Python environment and install pip packages
+```
+python3 -m venv env
+source env/bin/activate
+pip install -r requirements.txt
+```
 ### API key/token
 https://dash.cloudflare.com/profile/api-tokens
 ### Credentials as environment variables
