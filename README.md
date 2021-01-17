@@ -9,7 +9,7 @@ pip install -r requirements.txt
 ### API key/token
 https://dash.cloudflare.com/profile/api-tokens
 ### Credentials as environment variables
-* Create a file called `.env` and add the following contents:
+* Create a file named `.env` and add the following contents:
 ```
 # Only set this if using key
 export CF_API_EMAIL=''
