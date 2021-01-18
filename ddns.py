@@ -28,6 +28,7 @@ def update_validation(records, record, ip):
   if record['content'] == ip:
     print("No need to update", record['name'])
     return False
+  return True
 
 def update_record(cf, record, ip):
   data = {'name': record['name'], 'type': record['type'], 'content': ip, 'proxied': record['proxied']}
