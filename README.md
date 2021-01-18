@@ -1,9 +1,15 @@
 # Cloudflare DDNS
-## Prerequisites
+## Usage
+### Create virtual Python environment and install pip packages
+```
+python3 -m venv env
+source env/bin/activate
+pip install -r requirements.txt
+```
 ### API key/token
 https://dash.cloudflare.com/profile/api-tokens
 ### Credentials as environment variables
-* Create a file called `.env` and add the following contents:
+* Create a file named `.env` and add the following contents:
 ```
 # Only set this if using key
 export CF_API_EMAIL=''
@@ -22,5 +28,4 @@ export CF_RECORDS='domain.com, sub.domain.com, extra.sub.domain.com'
 ## Multiple zones
 * Add another crontab entry with another `.env` file
 ## Troubleshooting
-* API error
-  * Use API key instead of token
+* Try using API key instead of token
