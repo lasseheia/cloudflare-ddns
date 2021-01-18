@@ -23,6 +23,7 @@ export CF_RECORDS='domain.com, sub.domain.com, extra.sub.domain.com'
 ```
 * Update variables with your info
 #         Cloudflare auth                      Script for updating records
+```
 0 * * * * source /path/cloudflare-ddns/cf.env; /path/cloudflare-ddns/env/bin/python /path/cloudflare-ddns/ddns.py &> /dev/null
 ```
 ## Troubleshooting
