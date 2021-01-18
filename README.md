@@ -9,12 +9,18 @@ https://dash.cloudflare.com/profile/api-tokens
 export CF_API_EMAIL=''
 # Token or key
 export CF_API_KEY=''
+# ID of Zone
+export CF_ZONE=''
+# Name of records
+export CF_RECORDS='domain.com, sub.domain.com, extra.sub.domain.com'
 ```
 ## Example crontab
 ```
-#         Cloudflare auth                       Name of record to update  Script for updating records
-0 0 * * * source /scripts/cloudflare-ddns/.env; export CF_RECORD_NAME=''; /scripts/cloudflare-ddns/env/bin/python /scripts/cloudflare-ddns/ddns.py
+#         Cloudflare auth                    Script for updating records
+0 * * * * source /path/cloudflare-ddns/.env; /path/cloudflare-ddns/env/bin/python /path/cloudflare-ddns/ddns.py &> /dev/null
 ```
+## Multiple zones
+* Add another crontab entry with another `.env` file
 ## Troubleshooting
 * API error
   * Use API key instead of token
