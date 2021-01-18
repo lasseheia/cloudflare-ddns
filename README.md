@@ -25,7 +25,5 @@ export CF_RECORDS='domain.com, sub.domain.com, extra.sub.domain.com'
 #         Cloudflare auth                    Script for updating records
 0 * * * * source /path/cloudflare-ddns/.env; /path/cloudflare-ddns/env/bin/python /path/cloudflare-ddns/ddns.py &> /dev/null
 ```
-## Multiple zones
-* Add another crontab entry with another `.env` file
 ## Troubleshooting
 * Try using API key instead of token
