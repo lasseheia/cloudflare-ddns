@@ -2,7 +2,7 @@
 env
 
 # Environment variables
-.env
+cf.env
 
 # Cache
 __pycache__/

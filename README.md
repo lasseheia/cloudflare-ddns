@@ -8,8 +8,9 @@ pip install -r requirements.txt
 ```
 ### API key/token
 https://dash.cloudflare.com/profile/api-tokens
-### Credentials as environment variables
-* Create a file named `.env` and add the following contents:
+### Environment variables
+* Create a file named cf.env
+* Add the following information
 ```
 # Only set this if using key
 export CF_API_EMAIL=''
@@ -20,10 +21,9 @@ export CF_ZONE=''
 # Name of records
 export CF_RECORDS='domain.com, sub.domain.com, extra.sub.domain.com'
 ```
-## Example crontab
-```
-#         Cloudflare auth                    Script for updating records
-0 * * * * source /path/cloudflare-ddns/.env; /path/cloudflare-ddns/env/bin/python /path/cloudflare-ddns/ddns.py &> /dev/null
+* Update variables with your info
+#         Cloudflare auth                      Script for updating records
+0 * * * * source /path/cloudflare-ddns/cf.env; /path/cloudflare-ddns/env/bin/python /path/cloudflare-ddns/ddns.py &> /dev/null
 ```
 ## Troubleshooting
 * Try using API key instead of token
